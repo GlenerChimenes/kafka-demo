@@ -10,6 +10,7 @@ API REST desenvolvida com **Spring Boot 3**, **Java 21** e **H2 Database**, simu
 - **Spring Boot 3**
 - **Spring Web**
 - **Spring Data JPA**
+- **Spring Security**
 - **H2 Database (em memória)**
 - **Lombok**
 - **Maven**
