@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PortadorDTO {
+
     private Long id;
     private String nomeCompleto;
     private String cpf;

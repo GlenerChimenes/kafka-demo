@@ -1,4 +1,4 @@
-package com.br.mefinance.config.customgrant;
+package com.example.dockbank.config.customgrant;
 
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;

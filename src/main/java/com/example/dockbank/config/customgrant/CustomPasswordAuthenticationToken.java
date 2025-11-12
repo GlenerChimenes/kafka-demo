@@ -1,4 +1,4 @@
-package com.br.mefinance.config.customgrant;
+package com.example.dockbank.config.customgrant;
 
 import java.util.Collections;
 import java.util.HashSet;

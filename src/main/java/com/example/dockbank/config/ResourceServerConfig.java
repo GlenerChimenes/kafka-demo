@@ -1,4 +1,4 @@
-package com.br.mefinance.config;
+package com.example.dockbank.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;

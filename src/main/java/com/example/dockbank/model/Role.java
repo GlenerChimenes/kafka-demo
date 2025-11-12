@@ -1,4 +1,4 @@
-package com.br.mefinance.entities;
+package com.example.dockbank.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -20,7 +20,7 @@ public class Role implements GrantedAuthority {
 
     @ManyToMany(mappedBy = "roles")
     @JsonIgnore
-    private Set<User> usuarios = new HashSet<>();
+    private Set<Portador> portadores = new HashSet<>();
 
     public Role() {
     }
@@ -31,12 +31,12 @@ public class Role implements GrantedAuthority {
         this.authority = authority;
     }
 
-    public Set<User> getUsuarios() {
-        return usuarios;
+    public Set<Portador> getPortadores() {
+        return portadores;
     }
 
-    public void setUsuarios(Set<User> usuarios) {
-        this.usuarios = usuarios;
+    public void setPortadores(Set<Portador> portadores) {
+        this.portadores = portadores;
     }
 
     public Long getId() {

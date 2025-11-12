@@ -1,4 +1,4 @@
-package com.br.mefinance.config.customgrant;
+package com.example.dockbank.config.customgrant;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.lang.Nullable;

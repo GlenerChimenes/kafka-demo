@@ -1,8 +1,8 @@
-package com.br.mefinance.config;
+package com.example.dockbank.config;
 
-import com.br.mefinance.config.customgrant.CustomPasswordAuthenticationConverter;
-import com.br.mefinance.config.customgrant.CustomPasswordAuthenticationProvider;
-import com.br.mefinance.config.customgrant.CustomUserAuthorities;
+import com.example.dockbank.config.customgrant.CustomPasswordAuthenticationConverter;
+import com.example.dockbank.config.customgrant.CustomPasswordAuthenticationProvider;
+import com.example.dockbank.config.customgrant.CustomUserAuthorities;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;

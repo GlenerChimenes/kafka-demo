@@ -3,6 +3,7 @@ package com.example.dockbank.controller;
 import com.example.dockbank.dto.PortadorDTO;
 import com.example.dockbank.service.PortadorService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,16 +18,19 @@ public class PortadorController {
         this.portadorService = portadorService;
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_OPERATOR', 'ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<PortadorDTO> criar(@RequestBody PortadorDTO dto) {
         return ResponseEntity.ok(portadorService.criar(dto));
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_OPERATOR', 'ROLE_ADMIN')")
     @GetMapping
     public ResponseEntity<List<PortadorDTO>> listar() {
         return ResponseEntity.ok(portadorService.listar());
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{cpf}")
     public ResponseEntity<Void> remover(@PathVariable String cpf) {
         portadorService.remover(cpf);

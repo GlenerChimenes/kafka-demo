@@ -4,11 +4,16 @@ import com.example.dockbank.dto.PortadorDTO;
 import com.example.dockbank.exception.BusinessException;
 import com.example.dockbank.exception.NotFoundException;
 import com.example.dockbank.model.Portador;
+import com.example.dockbank.model.Role;
 import com.example.dockbank.model.StatusConta;
+import com.example.dockbank.projections.UserDetailsProjection;
 import com.example.dockbank.repository.ContaRepository;
 import com.example.dockbank.repository.PortadorRepository;
 import com.example.dockbank.util.CpfValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +22,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class PortadorService {
+public class PortadorService implements UserDetailsService {
 
     private final PortadorRepository portadorRepository;
     private final ContaRepository contaRepository;
@@ -62,6 +67,22 @@ public class PortadorService {
         }
 
         portadorRepository.deleteByCpf(cpfClean);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String cpf) throws UsernameNotFoundException {
+        List<UserDetailsProjection> result = portadorRepository.searchUserAndRolesByEmail(cpf);
+        if (result.isEmpty()) {
+            throw new UsernameNotFoundException("Usuario não encontrado");
+        }
+
+        Portador portador = new Portador();
+        portador.setCpf(cpf);
+        portador.setPassword(result.getFirst().getPassword());
+        for (UserDetailsProjection projection : result) {
+            portador.addRole(new Role(projection.getRoleId(), projection.getAuthority()));
+        }
+        return portador;
     }
 }
 

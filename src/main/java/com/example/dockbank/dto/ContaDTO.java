@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ContaDTO {
+
     private Long id;
     private String cpfPortador;
     private String numero;
