@@ -18,7 +18,6 @@ public class PortadorController {
         this.portadorService = portadorService;
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_OPERATOR', 'ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<PortadorDTO> criar(@RequestBody PortadorDTO dto) {
         return ResponseEntity.ok(portadorService.criar(dto));

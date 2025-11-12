@@ -45,14 +45,12 @@ public class ContaController {
         return ResponseEntity.ok().build();
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_OPERATOR', 'ROLE_ADMIN')")
     @PostMapping("/{numero}/saque")
     public ResponseEntity<Void> sacar(@PathVariable String numero, @RequestBody TransacaoDTO dto) {
         contaService.sacar(numero, dto.getValor());
         return ResponseEntity.ok().build();
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_OPERATOR', 'ROLE_ADMIN')")
     @PostMapping("/{numero}/bloquear")
     public ResponseEntity<Void> bloquear(@PathVariable String numero) {
         contaService.bloquear(numero);
@@ -66,7 +64,6 @@ public class ContaController {
         return ResponseEntity.ok().build();
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{numero}")
     public ResponseEntity<Void> fecharConta(@PathVariable String numero) {
         contaService.fecharConta(numero);
