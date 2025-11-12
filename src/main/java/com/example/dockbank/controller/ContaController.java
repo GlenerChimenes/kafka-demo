@@ -24,7 +24,6 @@ public class ContaController {
         return ResponseEntity.ok(contaService.criarConta(cpfPortador));
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_OPERATOR', 'ROLE_ADMIN')")
     @GetMapping("/{numero}")
     public ResponseEntity<ContaDTO> consultar(@PathVariable String numero) {
         return ResponseEntity.ok(contaService.consultar(numero));

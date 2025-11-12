@@ -24,7 +24,6 @@ public class PortadorController {
         return ResponseEntity.ok(portadorService.criar(dto));
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_OPERATOR', 'ROLE_ADMIN')")
     @GetMapping
     public ResponseEntity<List<PortadorDTO>> listar() {
         return ResponseEntity.ok(portadorService.listar());
