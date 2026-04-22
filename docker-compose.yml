@@ -12,19 +12,22 @@ services:
     networks:
       - desafiodock-net
 
-  app:
-    image: desafiodock:latest
-    container_name: desafiodock_app
-    depends_on:
-      - db
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/desafiodock
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: 123456
-    ports:
-      - "8080:8080"
-    networks:
-      - desafiodock-net
+#  app:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    image: desafiodock:latest
+#    container_name: desafiodock_app
+#    depends_on:
+#      - db
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/desafiodock
+#      SPRING_DATASOURCE_USERNAME: postgres
+#      SPRING_DATASOURCE_PASSWORD: 123456
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - desafiodock-net
 
   pgadmin:
     image: dpage/pgadmin4
