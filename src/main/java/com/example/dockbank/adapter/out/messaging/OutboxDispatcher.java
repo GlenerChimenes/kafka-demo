@@ -24,11 +24,16 @@ public class OutboxDispatcher {
 
         List<OutboxEvent> eventos = repository.findByProcessedFalse();
 
-        for (OutboxEvent e : eventos) {
-            kafkaTemplate.send(e.getTopic(), e.getPayload());
+        for (OutboxEvent event : eventos) {
+            try{
+                kafkaTemplate.send(event.getTopic(), event.getPayload());
 
-            e.setProcessed(true);
-            repository.save(e);
+                event.setProcessed(true);
+                repository.save(event);
+            } catch (Exception e){
+                // Se falhar O evento continuará como PENDING e será tentado na próxima execução.
+                System.err.println("Falha ao enviar evento " + event.getId() + ": " + e.getMessage());
+            }
         }
     }
 

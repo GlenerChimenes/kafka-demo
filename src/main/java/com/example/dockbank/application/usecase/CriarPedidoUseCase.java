@@ -4,6 +4,7 @@ import com.example.dockbank.domain.event.PedidoCriadoEvent;
 import com.example.dockbank.domain.model.Pedido;
 import com.example.dockbank.domain.port.EventPublisherPort;
 import com.example.dockbank.domain.port.PedidoRepositoryPort;
+import org.springframework.transaction.annotation.Transactional;
 
 public class CriarPedidoUseCase {
 
@@ -16,6 +17,7 @@ public class CriarPedidoUseCase {
         this.eventPublish = eventPublish;
     }
 
+    @Transactional
     public void executar(Double valor){
         Pedido pedido = new Pedido(valor);
 
